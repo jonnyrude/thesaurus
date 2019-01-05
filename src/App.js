@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SearchWarning from './modules/searchWarning.js';
 import thesaurusAPIcall from './thesaurusAPIcall.js';
+import Results from './modules/partOfSpeech.js';
 
 
 class App extends Component {
@@ -24,11 +25,12 @@ class App extends Component {
           <button type="subit">Submit</button>
         </form>
         <SearchWarning status={this.state.badSearch}/>
-
-        {/* TODO: Move results into it's own component*/}
-        {this.state.results && Object.keys(this.state.results).map(items => {
-          return <div>{items}</div>
-        })}
+        <div className="results">
+          {/* TODO: Move results into it's own component*/}
+          {this.state.results && Object.keys(this.state.results).map(item => {
+            return <Results wordType={item} oneDefinition={this.state.results[item]} />
+          })}
+        </div>
       </div>
     );
   }
@@ -58,7 +60,7 @@ class App extends Component {
     // Submit word to API
     thesaurusAPIcall(word)
       .then(results => {
-        console.log(results);
+        // console.log(results);
         this.setState({results})
       } )
   }

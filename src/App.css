@@ -13,13 +13,22 @@
   color: white;
 }
 
-
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.results {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
+
+.search-result {
+  width: 20em;
+}
+
+ul {
+  text-align: left;
+  border: 1px solid black;
+}
+
+li {
+  list-style: none;
+}
+
